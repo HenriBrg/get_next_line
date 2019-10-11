@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:08:42 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/10 19:14:27 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/11 20:10:50 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*s;
 
 	if (s1 == 0 || s2 == 0 ||
-		(!(s = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1)))))
+		(!(s = (char*)malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1)))))
 		return (0);
 	s[0] = '\0';
 	ft_strcat(s, s1);
@@ -33,7 +33,7 @@ char	*ft_strdup(const char *src)
 	i = 0;
 	while (src[i] != '\0')
 		i++;
-	if ((output = malloc(sizeof(char) * (i + 1))) == NULL)
+	if ((output = (char*)malloc(sizeof(char) * (i + 1))) == NULL)
 		return (NULL);
 	i = 0;
 	while (src[i] != '\0')
@@ -53,7 +53,7 @@ char	*ft_strndup(const char *src, size_t n)
 	i = 0;
 	while (src[i] != '\0' && i < n)
 		i++;
-	if ((output = malloc(sizeof(char) * (i + 1))) == NULL)
+	if ((output = (char*)malloc(sizeof(char) * (i + 1))) == NULL)
 		return (NULL);
 	i = 0;
 	while (src[i] != '\0' && i < n)
@@ -126,7 +126,3 @@ int		get_next_line(int fd, char **line)
 		return (line == 0) ? 1 : 0;
 	}
 }
-
-/*
-** TODO : lire STDOUT, lire fd > 10 000
-*/
