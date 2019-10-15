@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:08:42 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/14 19:09:38 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/15 11:26:02 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_read(const int fd, char *str)
 
 	if (fd < 0 || BUFF_SIZE < 1 || read(fd, buffer, 0) < 0)
 		return (0);
-	str = (str == 0) ? (char*)ft_calloc(1, 1) : str;
+	str = (str == 0) ? ft_strnew(1) : str;
 	while (ft_strchr(str, '\n') == 0)
 	{
 		if ((x = read(fd, buffer, BUFF_SIZE)) < 0)

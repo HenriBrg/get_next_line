@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:55:17 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/10 19:15:19 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/15 11:26:15 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (str);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+char *ft_strnew(size_t size)
 {
-	void	*p;
+  char *output;
 
-	if (!(p = malloc(count * size)))
-		return (p);
-	ft_memset(p, '\0', count * size);
-	return (p);
+  if ((output = (char*)malloc((size + 1) * sizeof(char))) == NULL)
+    return (NULL);
+  ft_memset(output, '\0', size + 1);
+  return (output);
 }
 
 char	*ft_strcat(char *dest, const char *src)
