@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:08:42 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/15 11:26:02 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/15 16:15:45 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*s;
 
-	if (s1 == 0 || s2 == 0 ||
-		(!(s = (char*)malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1)))))
+	if (s1 == 0 || s2 == 0 || (!(s = (char*)malloc(sizeof(char) *
+	((ft_strlen(s1) + ft_strlen(s2)) + 1)))))
 		return (0);
 	s[0] = '\0';
 	ft_strcat(s, s1);
@@ -69,8 +69,6 @@ char	*ft_strndup(const char *src, size_t n)
 **  1er while :
 **  	Lecture du fichier tant qu'on ne trouve pas le RETOUR LIGNE
 **  	+ tant que read ne retourne pas 0 ou < 0
-**
-** Ligne 87 (avant) : str = (str == 0) ? ft_strnew(1) : str;
 */
 
 char	*ft_read(const int fd, char *str)
@@ -109,7 +107,9 @@ int		get_next_line(int fd, char **line)
 	static char		*str;
 
 	str = ft_read(fd, str);
-	if ((tmp = ft_strchr(str, '\n')) > 0)
+	if (ft_strlen(str) == 0)
+		return (0);
+	if (((tmp = ft_strchr(str, '\n')) > 0))
 	{
 		i = tmp - str;
 		if ((*line = ft_strndup(str, i)) == 0)
@@ -123,6 +123,6 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		free(str);
 		str = NULL;
-		return (line == 0) ? 1 : 0;
+		return (1);
 	}
 }
