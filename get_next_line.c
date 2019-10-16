@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:08:42 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/16 14:35:33 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/16 14:44:51 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*ft_read(const int fd, char *str)
 	char	*tmp;
 	char	buffer[BUFFER_SIZE + 1];
 
-	if (fd < 0 || read(fd, buffer, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE < 1 || read(fd, buffer, 0) < 0)
 		return (0);
 	str = (str == 0) ? ft_strnew(1) : str;
 	while (ft_strchr(str, '\n') == 0)
@@ -106,13 +106,11 @@ char	*ft_read(const int fd, char *str)
 int		get_next_line(int fd, char **line)
 {
 	int				i;
-	char			safe[1];
 	char			*tmp;
 	static char		*str;
 
-	if (fd < 0 || BUFFER_SIZE < 1 || line == 0 || read(fd, safe, 0) < 0)
+	if (line == 0 || (str = ft_read(fd, str)) == 0)
 		return (-1);
-	str = ft_read(fd, str);
 	if (ft_strlen(str) == 0)
 		return (0);
 	if (((tmp = ft_strchr(str, '\n')) > 0))
