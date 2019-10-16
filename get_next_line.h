@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 19:11:51 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/15 16:35:40 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/16 12:26:02 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+
+#  ifndef BUFF_SIZE
+#  define BUFF_SIZE 1
+# endif
 
 int			get_next_line(int fd, char **line);
 size_t		ft_strlen(const char *str);
