@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 19:11:51 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/18 17:51:28 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/18 18:46:22 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <string.h>
 
 # ifndef BUFF_SIZE
 #  define BUFF_SIZE 8
