@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 16:55:17 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/15 14:48:15 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/19 19:23:13 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,19 @@ char	*ft_strchr(const char *s, int c)
 	return ((char*)s);
 }
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	size_t			i;
-	unsigned char	*str;
-
-	i = 0;
-	str = (unsigned char *)b;
-	while (i < len)
-	{
-		str[i] = (unsigned char)c;
-		i++;
-	}
-	return (str);
-}
-
 char	*ft_strnew(size_t size)
 {
-	char *output;
+	size_t	i;
+	char	*output;
 
+	i = 0;
 	if ((output = (char*)malloc((size + 1) * sizeof(char))) == NULL)
 		return (NULL);
-	ft_memset(output, '\0', size + 1);
+	while (i < size + 1)
+	{
+		output[i] = '\0';
+		i++;
+	}
 	return (output);
 }
 
