@@ -8,23 +8,23 @@ int		main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	fd1 = open("genese.txt", O_RDONLY);
+	fd1 = open("bible.txt", O_RDONLY);
 	while (get_next_line(fd1, &line) == 1)
 	{
 		printf("Ligne --->%s\n", line);
 		free(line);
 	}
 	close(fd1);
-	//while (1);
 	return (0);
 }
-/*
+
+
 __attribute__((destructor))void destructeur()
 {
 	printf("destructor\n");
 	while(1);
 }
-*/
+
 
 /*
 
