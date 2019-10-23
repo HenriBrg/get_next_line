@@ -6,7 +6,7 @@
 /*   By: hberger <hberger@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 15:08:42 by hberger           #+#    #+#             */
-/*   Updated: 2019/10/20 15:35:13 by hberger          ###   ########.fr       */
+/*   Updated: 2019/10/23 18:05:34 by hberger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,8 @@ int		get_next_line(int fd, char **line)
 	char			*tmp;
 	static char		*str;
 
-	if (line == 0 || (str = ft_read(fd, str)) == 0)
+	if ((str = ft_read(fd, str)) == 0)
 		return (-1);
-	if ((*line = NULL) || ft_strlen(str) == 0)
-		return (0);
 	if (((tmp = ft_strchr(str, '\n')) > 0))
 	{
 		i = tmp - str;
@@ -115,6 +113,6 @@ int		get_next_line(int fd, char **line)
 			return (-1);
 		free(str);
 		str = NULL;
-		return (1);
+		return (0);
 	}
 }
